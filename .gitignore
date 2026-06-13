@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Claude Code local tooling / preview config
+.claude/
+
+# Logs / temp
+*.log
