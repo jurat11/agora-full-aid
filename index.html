@@ -22,6 +22,27 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
 
+  <!-- AlfaCRM form messages → Meta Pixel Lead + back-button redirect -->
+  <script>
+    window.addEventListener('message', function(event) {
+
+      // Catch the instant form submission message
+      if (event.data === 'alfa_crm_lead_success') {
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead');
+          console.log('Meta Pixel Success: Lead event tracked!');
+        } else {
+          console.warn('Meta Pixel (fbq) is not initialized on this page yet.');
+        }
+      }
+
+      // Catch your existing back button message to handle redirection
+      if (event.data === 'redirect') {
+        window.location.href = 'https://agora-aid.vercel.app';
+      }
+    });
+  </script>
+
   <title>Agora Aid Program — Class of 2031 · Full Scholarship</title>
   <meta
     name="description"
